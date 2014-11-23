@@ -1,0 +1,11 @@
+*.log
+*.pot
+*.pyc
+
+*/*.log
+*/*.pot
+*/*.pyc
+*/local_settings.py
+*/settings.py
+
+project-structure
