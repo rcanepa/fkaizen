@@ -18,6 +18,7 @@ class UserView(generics.ListCreateAPIView):
 
 class LoginView(views.APIView):
     def post(self, request, format=None):
+        print(request)
         data = json.loads(request.body)
 
         username = data.get('username', None)

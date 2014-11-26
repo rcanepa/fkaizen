@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/.bowerrc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authentication/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authentication/permissions.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authentication/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authentication/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authentication/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categories/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categories/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categories/tests.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categories/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/categories/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/expenses/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/expenses/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/expenses/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/expenses/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fkaizen/middleware.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fkaizen/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fkaizen/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project-structure" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/app.config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/app.routes.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/auth/auth.module.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/auth/interceptors/auth.interceptor.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/auth/services/auth.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/javascripts/auth/services/users.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/javascripts.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/navbar.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/stylesheets.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/todo" charset="UTF-8" />
+  </component>
+</project>
+
