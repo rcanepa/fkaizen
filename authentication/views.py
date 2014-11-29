@@ -18,7 +18,7 @@ class UserView(generics.ListCreateAPIView):
 
 class LoginView(views.APIView):
     def post(self, request, format=None):
-        print(request)
+
         data = json.loads(request.body)
 
         username = data.get('username', None)
@@ -35,12 +35,12 @@ class LoginView(views.APIView):
                 return Response(serialized.data)
             else:
                 return Response({
-                                    'error': 'Awkward! Your account has been disabled.'
-                                }, status=status.HTTP_401_UNAUTHORIZED)
+                    'error': 'Awkward! Your account has been disabled.'
+                }, status=status.HTTP_401_UNAUTHORIZED)
         else:
             return Response({
-                                'error': 'Looks like your username or password is wrong. :('
-                            }, status=status.HTTP_400_BAD_REQUEST)
+                'error': 'Looks like your username or password is wrong. :('
+            }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LogoutView(views.APIView):
