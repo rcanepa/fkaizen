@@ -1,12 +1,14 @@
 (function() {
+
   'use strict';
+
   angular
     .module('fkaizen.auth.controllers')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$location', '$scope', 'Auth'];
+  LoginController.$inject = ['$location', '$scope'];
 
-  function LoginController($location, $scope, Auth) {
+  function LoginController($location, $scope) {
     var vm = this;
 
     vm.login = login;
@@ -16,15 +18,16 @@
     function activate() {
 
       // If the user is authenticated, they should not be here.
-      if (Auth.isAuthenticated()) {
+      /*if (Auth.isAuthenticated()) {
         $location.url('/');
-      }
+      }*/
 
     }
 
     function login() {
 
-      Auth.login(vm.username, vm.password);
+      //Auth.login(vm.username, vm.password);
+      console.log('Log in button clicked!');
 
     }
 

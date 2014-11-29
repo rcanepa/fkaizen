@@ -6,7 +6,8 @@
     .module('fkaizen', [
       'fkaizen.config',
       'fkaizen.routes',
-      'fkaizen.layout'
+      'fkaizen.layout',
+      'fkaizen.auth'
     ]);
 
   angular
