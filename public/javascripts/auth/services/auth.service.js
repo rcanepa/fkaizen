@@ -1,67 +1,123 @@
 (function() {
-  angular.module('fkaizen.auth.services').
-    service('Auth', function($http, $location, $q, $window) {
-      var Auth = {
-        getToken: function() {
-          return $window.localStorage.getItem('token');
-        },
 
-        setToken: function(token) {
-          $window.localStorage.setItem('token', token);
-        },
+  'use strict';
 
-        deleteToken: function() {
-          $window.localStorage.removeItem('token');
-        },
+  angular
+    .module('fkaizen.auth.services')
+    .factory('Auth', Auth);
 
-        isAuthenticated: function() {
-          return $window.localStorage.getItem('token') !== undefined
-        },
+  Auth.$inject = ['$cookies', '$http'];
 
-        login: function(username, password) {
-          var deferred = $q.defer();
+  function Auth($cookies, $http) {
 
-          $http.post('/api/v1/auth/login/', {
-            username: username, password: password
-          }).success(function(response, status, headers, config) {
-            if (response.token) {
-              Auth.setToken(response.token);
-            }
+    var Auth = {
+      register: register,
+      login: login,
+      logout: logout,
+      getAuthenticatedUser: getAuthenticatedUser,
+      isAuthenticated: isAuthenticated,
+      setAuthenticatedUser: setAuthenticatedUser,
+      unAuthenticate: unAuthenticate
+    };
 
-            deferred.resolve(response, status, headers, config);
-          }).error(function(response, status, headers, config) {
-            deferred.reject(response, status, headers, config);
-          });
+    return Auth;
 
-          return deferred.promise;
-        },
+    function register(username, password, email) {
 
-        logout: function() {
-          Auth.deleteToken();
-          window.location = '/';
-        },
+      return $http.post('/api/v1/users/', {
+        username: username,
+        password: password,
+        email: email
+      }).then(registerSuccessFn, registerErrorFn);
 
-        register: function(user) {
-          var deferred = $q.defer();
+    }
 
-          $http.post('/api/v1/auth/register/', {
-            user: user
-          }).success(function(response, status, headers, config) {
-            Auth.login(user.username, user.password).
-              then(function(response, status, headers, config) {
-                window.location = '/';
-              });
+    function registerSuccessFn(data, status, headers, config) {
 
-            deferred.resolve(response, status, headers, config);
-          }).error(function(response, status, headers, config) {
-            deferred.reject(response, status, headers, config);
-          });
+      Auth.login(username, password);
 
-          return deferred.promise;
-        }
+    }
 
-      };
+    function registerErrorFn(data, status, headers, config) {
 
-      return Auth;
-    });
+      console.error('Epic failure!');
+
+    }
+
+    function logout() {
+
+      return $http.post('/api/auth/logout/')
+        .then(logoutSuccessFn, logoutErrorFn);
+
+      function logoutSuccessFn(data, status, headers, config) {
+
+        Auth.unAuthenticate();
+
+        window.location = '/';
+
+      }
+
+      function logoutErrorFn(data, status, headers, config) {
+
+        console.error('Epic failure!');
+
+      }
+
+    }
+
+    function getAuthenticatedUser() {
+
+      if (!$cookies.authenticatedUser) {
+        return;
+      }
+
+      return JSON.parse($cookies.authenticatedUser);
+
+    }
+
+    function isAuthenticated() {
+
+      return !!$cookies.authenticatedUser;
+
+    }
+
+    function setAuthenticatedUser(user) {
+
+      $cookies.authenticatedUser = JSON.stringify(user);
+
+    }
+
+    function unAuthenticate() {
+
+      delete $cookies.authenticatedUser;
+
+    }
+
+    function login(username, password) {
+      console.log('Trying to log in!');
+      return $http.post('/api/auth/login/', {
+        username: username,
+        password: password
+      }).then(loginSuccessFn, loginErrorFn);
+
+      function loginSuccessFn(data, status, headers, config) {
+
+        console.log('Logged in!!');
+
+        Auth.setAuthenticatedUser(data.data);
+
+        window.location = '/';
+      }
+
+      function loginErrorFn(data, status, headers, config) {
+
+        console.error(status, headers, data.error);
+        console.error('Epic failure!');
+
+      }
+
+    }
+
+  }
+
 })();

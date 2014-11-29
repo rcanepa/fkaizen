@@ -6,9 +6,9 @@
     .module('fkaizen.layout.controllers')
     .controller('NavBarController', NavBarController);
 
-  NavBarController.$inject = ['$scope'];
+  NavBarController.$inject = ['$scope', 'Auth'];
 
-  function NavBarController($scope) {
+  function NavBarController($scope, Auth) {
 
     var vm = this;
 
@@ -20,13 +20,12 @@
 
     function activate() {
 
-      console.log('From NavBarController');
-
     }
 
     function logout() {
 
       console.log('I am logging out!');
+      Auth.logout();
 
     }
 

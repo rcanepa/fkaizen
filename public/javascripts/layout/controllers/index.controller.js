@@ -19,8 +19,6 @@
 
     function activate() {
 
-      console.log('From IndexController');
-
     }
 
   }

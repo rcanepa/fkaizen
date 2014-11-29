@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
@@ -19,7 +21,11 @@ class UserView(generics.ListCreateAPIView):
 class LoginView(views.APIView):
     def post(self, request, format=None):
 
-        data = json.loads(request.body)
+        print(request.body.decode())
+        print(request.POST)
+        print(request.encoding)
+
+        data = json.loads(request.body.decode())
 
         username = data.get('username', None)
         password = data.get('password', None)

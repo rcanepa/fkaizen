@@ -3,9 +3,12 @@
   'use strict';
 
   angular.module('fkaizen.auth', [
-    'fkaizen.auth.controllers'
+    'ngCookies',
+    'fkaizen.auth.controllers',
+    'fkaizen.auth.services'
   ]);
 
   angular.module('fkaizen.auth.controllers', []);
+  angular.module('fkaizen.auth.services', []);
 
 })();

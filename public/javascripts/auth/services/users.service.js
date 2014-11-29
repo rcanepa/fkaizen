@@ -1,5 +1,5 @@
 (function() {
-  angular.module('fkaizen.auth.services')
+  /*angular.module('fkaizen.auth.services')
     .service('Users', function($http) {
       var Users = {
         all: function() {
@@ -8,5 +8,5 @@
       };
 
       return Users;
-    });
+    });*/
 })();
