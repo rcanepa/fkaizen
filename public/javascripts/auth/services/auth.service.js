@@ -23,25 +23,19 @@
     return Auth;
 
     function register(username, password, email) {
-
-      return $http.post('/api/v1/users/', {
+      return $http.post('/api/users/', {
         username: username,
         password: password,
         email: email
       }).then(registerSuccessFn, registerErrorFn);
-
     }
 
     function registerSuccessFn(data, status, headers, config) {
-
       Auth.login(username, password);
-
     }
 
     function registerErrorFn(data, status, headers, config) {
-
       console.error('Epic failure!');
-
     }
 
     function logout() {
@@ -50,72 +44,41 @@
         .then(logoutSuccessFn, logoutErrorFn);
 
       function logoutSuccessFn(data, status, headers, config) {
-
         Auth.unAuthenticate();
-
         window.location = '/';
-
       }
 
       function logoutErrorFn(data, status, headers, config) {
-
         console.error('Epic failure!');
-
       }
-
     }
 
     function getAuthenticatedUser() {
-
       if (!$cookies.authenticatedUser) {
         return;
       }
-
       return JSON.parse($cookies.authenticatedUser);
-
     }
 
     function isAuthenticated() {
-
       return !!$cookies.authenticatedUser;
-
     }
 
     function setAuthenticatedUser(user) {
-
       $cookies.authenticatedUser = JSON.stringify(user);
-
     }
 
     function unAuthenticate() {
-
       delete $cookies.authenticatedUser;
-
     }
 
-    function login(username, password) {
-      console.log('Trying to log in!');
+    function login(username, password, successCb, errorCb) {
+
       return $http.post('/api/auth/login/', {
         username: username,
         password: password
-      }).then(loginSuccessFn, loginErrorFn);
-
-      function loginSuccessFn(data, status, headers, config) {
-
-        console.log('Logged in!!');
-
-        Auth.setAuthenticatedUser(data.data);
-
-        window.location = '/';
-      }
-
-      function loginErrorFn(data, status, headers, config) {
-
-        console.error(status, headers, data.error);
-        console.error('Epic failure!');
-
-      }
-
+      }).then(successCb)
+        .catch(errorCb);
     }
 
   }

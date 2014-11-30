@@ -21,10 +21,6 @@ class UserView(generics.ListCreateAPIView):
 class LoginView(views.APIView):
     def post(self, request, format=None):
 
-        print(request.body.decode())
-        print(request.POST)
-        print(request.encoding)
-
         data = json.loads(request.body.decode())
 
         username = data.get('username', None)
@@ -46,7 +42,7 @@ class LoginView(views.APIView):
         else:
             return Response({
                 'error': 'Looks like your username or password is wrong. :('
-            }, status=status.HTTP_400_BAD_REQUEST)
+            }, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class LogoutView(views.APIView):

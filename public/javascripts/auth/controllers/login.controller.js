@@ -16,20 +16,24 @@
     activate();
 
     function activate() {
-
-      // If the user is authenticated, they should not be here.
       if (Auth.isAuthenticated()) {
-
         $location.url('/');
-
       }
-
     }
 
     function login() {
+      Auth.login(vm.username, vm.password, successfulLogin, failedLoginAttempt);
 
-      Auth.login(vm.username, vm.password);
+      function successfulLogin(authResponse) {
+        console.log('From the service:', authResponse);
+        Auth.setAuthenticatedUser(authResponse);
+        window.location = '/';
+        return authResponse;
+      }
 
+      function failedLoginAttempt(authResponse) {
+        vm.error = authResponse.data.error;
+      }
     }
 
   }
