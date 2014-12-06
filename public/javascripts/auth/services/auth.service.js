@@ -73,7 +73,6 @@
     }
 
     function login(username, password, successCb, errorCb) {
-
       return $http.post('/api/auth/login/', {
         username: username,
         password: password

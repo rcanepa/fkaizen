@@ -25,8 +25,6 @@
       Auth.login(vm.username, vm.password, successfulLogin, failedLoginAttempt);
 
       function successfulLogin(authResponse) {
-        console.log('From the service:', authResponse);
-        Auth.setAuthenticatedUser(authResponse);
         window.location = '/';
         return authResponse;
       }

@@ -7,7 +7,8 @@
       'fkaizen.config',
       'fkaizen.routes',
       'fkaizen.layout',
-      'fkaizen.auth'
+      'fkaizen.auth',
+      'fkaizen.categories'
     ]);
 
   angular

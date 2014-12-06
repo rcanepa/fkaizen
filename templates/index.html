@@ -13,7 +13,15 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 ng-view"></div>
+      {% if user.is_authenticated %}
+        {% include 'leftmenu.html' %}
+        <div class="col-xs-10" ng-view>
+          <h3>Welcome</h3>
+        </div>
+      {% else %}
+        <div class="col-xs-12" ng-view>
+        </div>
+      {% endif %}
     </div>
   </div>
   {% include 'footer.html' %}

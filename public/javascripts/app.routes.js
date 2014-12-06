@@ -22,6 +22,10 @@
       controller: 'IndexController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/layout/index.html'
+    }).when('/categories', {
+      controller: 'CategoriesController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/categories/index.html'
     }).when('/+:username', {
       controller: 'ProfileController',
       controllerAs: 'vm',

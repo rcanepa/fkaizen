@@ -11,14 +11,12 @@
   function IndexController($scope, $location) {
 
     var vm = this;
-
     vm.dummy = 'I am a dummy var!';
     vm.absUrl = $location.absUrl();
 
     activate();
 
     function activate() {
-
     }
 
   }
